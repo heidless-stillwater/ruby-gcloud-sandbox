@@ -1,3 +1,14 @@
+# tools/notes
+### secret_key_base
+```
+EDITOR='subl --wait' rails credentials:edit
+
+# generate new secret_key_base
+#rake secret
+
+# set production credentials
+#EDITOR='subl --wait' bin/rails credentials:edit --environment production
+```
 
 
 # deploy Google Cloud - overview
@@ -51,9 +62,14 @@ gsutil iam ch allUsers:objectViewer gs://heidless-pfolio-deploy-5-rails-bucket-0
 # Store secret values in Secret Manager
 bin/rails credentials:edit
 --
-secret_key_base: GENERATED_VALUE
+# aws:
+#   access_key_id: 123
+#   secret_access_key: 345
+
+# Used as the base secret for all MessageVerifiers in Rails, including the one protecting cookies.
+secret_key_base: <GENERATED VALUE>
 gcp:
-  db_password: PASSWORD
+  db_password: IqRvMQKgOaFkuQBeobzzNrkFbxBUYfevvFgIpyNnzQSfSAgSgj
 --
 
 gcloud secrets create rails-secret-0 --data-file config/master.key
@@ -63,6 +79,12 @@ gcloud secrets describe rails-secret-0
 gcloud secrets versions access latest --secret rails-secret-0
 
 gcloud projects describe heidless-pfolio-deploy-5 --format='value(projectNumber)'
+--
+110223146514
+--
+
+
+
 
 
 
