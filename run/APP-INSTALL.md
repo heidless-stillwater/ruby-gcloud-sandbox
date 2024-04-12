@@ -49,6 +49,9 @@ find / -name "postgresql.conf" ! -path '*/mnt/*'
 
 grep -Rnw '/path/to/somewhere/' -e 'pattern'
 
+grep -Rnw '.' -e 'PORT'
+
+
 
 ```
 

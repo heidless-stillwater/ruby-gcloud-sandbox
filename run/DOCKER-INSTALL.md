@@ -19,9 +19,9 @@ bundle config set --local && \
 RAILS_ENV='development'
 echo $RAILS_ENV
 
-docker build -f Dockerfile -t ab-test-0 .
+docker build -f Dockerfile -t rails-0 .
 
-docker run -p 3000:3000 -v $(pwd):/rails ab-test-0
+docker run -p 3000:3000 -v $(pwd):/rails rails-0
 
 --
 
